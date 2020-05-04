@@ -269,7 +269,7 @@ function parse_attributes() {
       REV="${BASH_REMATCH[2]}"
     fi
 
-    if [[ ( $REV =~ ^[0-9]+ && $XSD_VERSION -ge $REV ) || $XSD_VERSION == $REV ]]; then
+    if [[ ( $REV =~ ^[0-9]+ && $XSD_VERSION -ge $REV ) || $XSD_VERSION == $REV || $SRC == "libraries" ]]; then
       # Parse the property, if present. Any space is replaced by @
       VALUE=$( grep "^$SRC=" "$PROPS" | cut -d = -f 2 | tr ' ' '@' | tr -d '\r' )
       if [[ -n "$VALUE" ]]; then
